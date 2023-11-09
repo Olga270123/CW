@@ -77,15 +77,9 @@ def find_by_lastname(phone_book, last_name):
 def change_number(phone_book, last_name, new_number):
      for i in range(len(phone_book)):
         if phone_book[i].get('Фамилия').lower() == last_name.lower():
-            return phone_book[i].update({'Телефон': new_number})
-        
-#4. Удалить запись
-def delete_by_lastname(phone_book, last_name):
-     for i in range(len(phone_book)):
-        if phone_book[i].get('Фамилия') == last_name:
-            del phone_book[i] 
-            break
-     
+            phone_book[i].update({'Телефон': new_number})
+        write_txt('phonebook.txt',phone_book)
+    
 
 #5. Найти абонента по номеру телефона
 def find_by_number(phone_book, number):
@@ -93,7 +87,14 @@ def find_by_number(phone_book, number):
         if phone_book[i].get('Телефон') == number:
             return phone_book[i].get('Фамилия')
         
-
+#4. Удалить запись
+def delete_by_lastname(phone_book, last_name):
+     for i in range(len(phone_book)):
+        if phone_book[i].get('Фамилия') == last_name:
+            del phone_book[i] 
+            break
+        write_txt('phonebook.txt',phone_book)
+        
 work_with_phonebook()
 
 
